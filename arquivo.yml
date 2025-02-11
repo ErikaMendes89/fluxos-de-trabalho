@@ -1,11 +1,19 @@
-name: Simple GitHub Actions workflow
+name: Simple GitHub Actions workflow # A primeira linha do fluxo de trabalho define seu nome, que é exibido na guia Actions do repositório na interface Web do GitHub.
+#A linha on: [push] designa o evento, que dispara a execução do fluxo de trabalho (nesse caso, um push para qualquer branch no repositório do fluxo de trabalho).
 
 on: [push]
 
+#O fluxo de trabalho consiste em um único trabalho chamado say_hello, conforme indicado pelo conteúdo que segue a linha jobs:. 
+#A próxima linha (runs-on: ubuntu-latest) determina o tipo de sistema operacional que deve ser usado para executar o trabalho.
+#A escolha depende das tarefas que o trabalho contém e, nesse caso, o trabalho seria executado também em qualquer sistema operacional baseado no Windows.
 jobs:
   say_hello:
     runs-on: ubuntu-latest
-
+#O trabalho consiste em duas etapas, conforme indicado pelo conteúdo após a linha steps:.
+#A sintaxe da etapa dá suporte a um atributo de nome opcional, que pode ajudar a entender a finalidade da etapa ao analisar as execuções do fluxo de trabalho. 
+#O restante da sintaxe depende do tipo de ação que uma determinada etapa deve realizar. 
+#Neste exemplo, a primeira etapa é fazer check-out do repositório atual (que faz download do conteúdo do repositório para o sistema em que o trabalho está sendo executado),
+#enquanto a segunda executa o comando echo, que exibe uma mensagem amigável.
     steps:
     - name: Checkout Repository
       uses: actions/checkout@v2
